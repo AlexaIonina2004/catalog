@@ -31,14 +31,14 @@ function renderCategories(products) {
 
     const uniqueCategories = [...new Set(products.map(p => p.category))];
 
-    uniqueCategories.forEach(category => {
+    uniqueCategories?.forEach(category => {
         const categoryBody = document.createElement('div');
         categoryBody.className = 'checkboxes-body';
         categoryBody.innerHTML = `
             <input type="checkbox" class="checkboxes-body-item" id="${category}" name="category" value="${category}">
             <label for="${category}">${category}</label>
         `;
-        containerCategory.appendChild(categoryBody);
+        containerCategory?.appendChild(categoryBody);
     });
 }
 
@@ -48,7 +48,7 @@ function renderProducts(products) {
 
     const favoriteIds = (JSON.parse(localStorage.getItem('favorites')) || []).map(String);
 
-    products.forEach(product => {
+    products?.forEach(product => {
         const card = document.createElement('div');
         card.className = 'card-catalog';
 
@@ -67,7 +67,7 @@ function renderProducts(products) {
             img.src = './img/save-image.png';
         };
 
-        const isFavorite = favoriteIds.includes(String(product.id));
+        const isFavorite = favoriteIds?.includes(String(product.id));
 
         card.innerHTML = `
         <button type="button" class="card-catalog-favorite ${isFavorite ? 'active' : ''}" data-id="${product.id}">
@@ -85,18 +85,18 @@ function renderProducts(products) {
         </div>
         `;
 
-        card.querySelector('.card-catalog__content').appendChild(img);
+        card?.querySelector('.card-catalog__content').appendChild(img);
         container.appendChild(card);
     });
 
     const favoriteBtns = document.querySelectorAll('.card-catalog-favorite');
-    favoriteBtns.forEach(btn => {
+    favoriteBtns?.forEach(btn => {
         btn.addEventListener('click', () => {
             const productId = btn.dataset.id;
             let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-            if (favorites.includes(productId)) {
-                favorites = favorites.filter(id => id !== productId);
+            if (favorites?.includes(productId)) {
+                favorites = favorites?.filter(id => id !== productId);
                 btn.classList.remove('active');
             } else {
                 favorites.push(productId);
@@ -124,7 +124,7 @@ function applyFilters() {
     const max = Number(inputs[1].value) || Infinity;
     const selectedCategories = [...checkboxes].map(cb => cb.value);
 
-    const filtered = allProducts.filter(product => {
+    const filtered = allProducts?.filter(product => {
         return (
             product.price >= min &&
             product.price <= max &&
@@ -142,7 +142,7 @@ resetBtn.addEventListener('click', () => {
     inputs[1].value = '';
 
     const checkboxes = document.querySelectorAll('.checkboxes-body-item');
-    checkboxes.forEach(cb => cb.checked = false);
+    checkboxes?.forEach(cb => cb.checked = false);
     renderProducts(allProducts);
 });
 
@@ -150,11 +150,11 @@ const customSelect = document.querySelector('.custom-select');
 const trigger = customSelect.querySelector('.custom-select__trigger');
 const options = customSelect.querySelectorAll('.custom-option');
 
-trigger.addEventListener('click', () => {
+trigger?.addEventListener('click', () => {
     customSelect.classList.toggle('open');
 });
 
-options.forEach(option => {
+options?.forEach(option => {
     option.addEventListener('click', () => {
         const value = option.dataset.value;
         trigger.textContent = option.textContent;
@@ -175,8 +175,8 @@ function sortProducts(products, sortType) {
 }
 
 document.addEventListener('click', (e) => {
-    if (!customSelect.contains(e.target)) {
-        customSelect.classList.remove('open');
+    if (!customSelect?.contains(e.target)) {
+        customSelect?.classList.remove('open');
     }
 });
 
@@ -186,12 +186,12 @@ function showSkeletons(count = 6) {
     for (let i = 0; i < count; i++) {
         const skeleton = document.createElement('div');
         const skeletonFilter = document.createElement('div');
-        skeleton.classList.add('skeleton-product');
-        skeleton.classList.add('skeleton');
-        skeletonFilter.classList.add('checkboxes-body');
-        skeletonFilter.classList.add('skeleton');
-        skeletonContainer.appendChild(skeleton);
-        skeletonContainerFilter.appendChild(skeletonFilter);
+        skeleton?.classList.add('skeleton-product');
+        skeleton?.classList.add('skeleton');
+        skeletonFilter?.classList.add('checkboxes-body');
+        skeletonFilter?.classList.add('skeleton');
+        skeletonContainer?.appendChild(skeleton);
+        skeletonContainerFilter?.appendChild(skeletonFilter);
     }
 }
 
