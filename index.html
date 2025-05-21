@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Тестовое Ferma</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<main>
+    <section class="catalog">
+        <div class="container">
+            <h1>Каталог товаров</h1>
+            <div class="catalog-wrapper">
+                <div class="catalog-filter">
+                    <div class="catalog-filter__top">
+                        <button type="button" class="catalog-filter__top-close">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19.0005 4.99988L5.00049 18.9999M5.00049 4.99988L19.0005 18.9999" stroke="#011627" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="catalog-filter__price">
+                        <input class="catalog-filter__price-input" type="number" placeholder="Мин. цена">
+                        <input class="catalog-filter__price-input" type="number" placeholder="Макс. цена">
+
+                    </div>
+                    <div class="catalog-filter__category">
+                    </div>
+                    <div class="catalog-filter__skeleton">
+                    </div>
+                    <div class="catalog-filter__bottom">
+                        <button class="filter-button button" type="button">Отфильтровать</button>
+                        <button class="reset-button button" type="button">Сброс</button>
+                    </div>
+                </div>
+                <div class="catalog__inner">
+
+                    <div class="catalog__inner-sort">
+                        <div class="custom-select">
+                            <div class="custom-select__trigger">Сортировать по</div>
+                            <ul class="custom-options">
+                                <li class="custom-option" data-value="price-asc">Цена: по возрастанию</li>
+                                <li class="custom-option" data-value="price-desc">Цена: по убыванию</li>
+                                <li class="custom-option" data-value="title-asc">Название: A–Z</li>
+                                <li class="custom-option" data-value="title-desc">Название: Z–A</li>
+                            </ul>
+                        </div>
+                        <button class="filter-button button filter-mobile" type="button">Фильтр</button>
+                    </div>
+                    <div class="catalog__skeletons col-3"></div>
+                    <div class="catalog__items col-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
